@@ -1,0 +1,36 @@
+
+<script>
+function showStudents() {
+    // if (str == "") {
+    //     document.getElementById("txtHint").innerHTML = "";
+    //     return;
+    // } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","ajax/getstudents.php",true);
+        xmlhttp.send();
+    
+}
+</script>
+
+
+
+<div class="w3-container w3-white w3-text-teal">
+  <h4 onclick="showStudents();"><i class="fa fa-eye w3-padding-small" aria-hidden="true"></i>View Students</h4>
+  
+</div>
+
+<div id="txtHint" class= "w3-container w3-responsive"></div>
+
+
+

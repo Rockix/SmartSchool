@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+		$(function(){
+		 $("#drop-box").click(function(){
+		   $("#upl").click();
+		 });
+		 // trigger the choose file button when clicked in the blue box
+
+		 // To prevent Browsers from opening the file when its dragged and dropped on to the page
+		 $(document).on('drop dragover', function (e) {
+		  e.preventDefault();
+		  });  
+
+		 // Add a listener to check if a file is chosen to trigger the upload action to call function fileUpload
+		 $('input[type=file]').on('change', fileUpload);
+	});
+	</script>
+</head>
+<body>
+<form>		
+	<div id="drop-box">
+ 	<p>Select Files</p>
+  </div>
+	<input type="file" name="upl" id="upl" />
+</form>
+
+
+<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+</body>
+</html>

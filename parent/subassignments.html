@@ -1,0 +1,106 @@
+<script type="text/javascript">
+
+     $(document).ready(function () {
+      var request;
+
+      $("#subAssignmentForm").submit(function (event) {
+
+        // Prevent default posting of form - put here to work in case of errors
+        event.preventDefault();
+
+        // Abort any pending request
+        if(request){
+          request.abort();
+        }
+
+        var $form = $(this);
+        var $inputs = $form.find("input, file, button");
+
+        // Serialize the data in the form
+            var serializedData = $form.serialize();
+
+            // Let's disable the inputs for the duration of the Ajax request.
+        // Note: we disable elements AFTER the form data has been serialized.
+        // Disabled form elements will not be serialized.
+        $inputs.prop("disabled", true);
+
+        // Fire off the request to /pubassignments.php
+        request = $.post({
+            url: "../ajax/submitassignments.php",
+            type: "post",
+            data: serializedData
+        });
+
+        
+        // Callback handler that will be called on success
+        request.done(function (response, textStatus, jqXHR){
+            // Log a message to the console
+            console.log("Hooray, it worked!");
+
+            //swal('Good job!', 'Student added successfully', 'success');
+            alert('Assignment published successfully');
+        });
+
+        // Callback handler that will be called on failure
+        request.fail(function (jqXHR, textStatus, errorThrown){
+            // Log the error to the console
+            console.error(
+                "The following error occurred: "+
+                textStatus, errorThrown
+            );
+            alert('Failed publish assignment!!!');
+            });
+
+
+            // Callback handler that will be called regardless
+        // if the request failed or succeeded
+        request.always(function () {
+            // Reenable the inputs
+            $inputs.prop("disabled", false);
+        });
+
+
+      });
+     });
+</script>
+
+<script src="js/upscript.js"></script>
+
+<div class="w3-container w3-white w3-text-teal">
+  <h4><i class="fa fa-upload w3-padding-small" aria-hidden="true"></i>Submit Assignments</h4>
+</div>
+
+
+<div class="w3-container">
+  
+<div class="w3-panel w3-card-4" id="">
+<form  method="post" enctype="multipart/form-data"  action="" id="subAssignmentForm">
+  <!--<header class="w3-container w3-text-teal w3-light-grey">
+  <h3>Title</h3>
+</header>
+  <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="1000000" />
+  <input class="w3-input w3-animate-input" name="title" id="title" type="text" style="width:30%" placeholder="Enter title of assignment" minlength="2" required="required"/>-->
+
+  <header class="w3-container w3-text-teal w3-light-grey">
+  <h3>Select assignment to submit</h3>
+</header>
+ <!-- <input class="w3-input" name="fileToUpload" type="file" style="width:30%">-->
+  <input class="w3-input w3-animate-input" type="file" id="fileselect" name="fileselect"  style="width:30%" minlength="2" required="required" />
+
+   <div class="w3-padding-16">
+  <button type="submit" id="btnPublish" class="w3-btn w3-blue-grey">Submit</button>
+  </div>
+</form>
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+  ("#pubAssignmentForm").validate();
+</script>
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+
+
+
+<!--<script src="filedrag.js"></script>-->

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<title>SmartSchool</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/mytheme.css">
+<link rel="stylesheet" href="css/sweetalert2.min.css">
+<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+
+<script type="text/javascript" src="js/sweetalert2.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		// $('#ass_home').click(function() {
+		// 	 $("#globalhome").load("assignments.html");
+		// });
+
+	    $('#overview').click(function() {
+			 $("#globalhome").load("overview.html");
+		});
+
+		$('#publish_home').click(function() {
+			 $("#globalhome").load("publish.html");
+		});
+
+		$('#view_return').click(function() {
+			 $("#globalhome").load("returnassignments.html");
+		});
+		$('#add_students').click(function() {
+			 $("#globalhome").load("addstudents.html");
+		});
+		$('#view_students').click(function() {
+			 $("#globalhome").load("viewstudents.html");
+		});
+		$('#record_marks').click(function() {
+			 $("#globalhome").load("recordmarks.html");
+		});
+		$('#view_marks').click(function() {
+			 $("#globalhome").load("viewmarksheet.html");
+		});
+	});
+</script>
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey ">
+
+    <header class="w3-container w3-padding-8 w3-teal"> 
+        <button class="w3-button w3-xlarge w3-left-align" onclick="showSidebar()">☰</button>
+		<button class="w3-button w3-xlarge w3-left-align" onclick="">Dashboard</button>
+    </header>
+
+    <div class="w3-row">
+    
+      <div class="w3-col s3 w3-pale-blue w3-center">
+	    <p></p>
+	    
+	    <div class="w3-sidebar w3-bar-block w3-text-grey w3-pale-blue" style="width:25%"  id="mySidebar" > 
+				  <!--<button onclick="closeSidebar()" class="w3-bar-item w3-large">dismiss &times;</button> -->
+				  <a id="overview" href="#" class="w3-bar-item w3-button"><i class="fa fa-tachometer w3-padding fa-2x" aria-hidden="true"></i><span>Overview</span></a>
+				  <div class="w3-dropdown-hover">
+				  <button id="ass_home" href="#" class="w3-button" ><i class="fa fa-outdent w3-padding fa-2x" aria-hidden="true"></i>Assignments<i class="fa fa-caret-down w3-padding"></i></button>
+				  <div id="ass" >
+
+										    <!--<small><ul class="w3-ul">
+											    <li><a id="publish_home"><i class="fa fa-pencil w3-padding-small" aria-hidden="true"></i>Publish</a></li>
+												<li><a id="view_home"><i class="fa fa-eye w3-padding-small" aria-hidden="true"></i>View</a></li>
+												
+											</ul></small> -->
+											<div class="w3-small w3-card w3-dropdown-content w3-bar-block">
+												<a id="publish_home" href="#" class="w3-bar-item w3-button"><i class="fa fa-pencil w3-padding"></i>Publish</a>
+												<a id="view_home" href="#" class="w3-bar-item w3-button"><i class="fa fa-eye w3-padding"></i>View</a>
+												<a id="view_return" href="#" class="w3-bar-item w3-button"><i class="fa fa-eye w3-padding"></i>Returned Assignments</a>
+												
+											</div>
+				  </div>
+				  </div>
+				  <div class="w3-dropdown-hover">
+				  <button id="ass_home" href="#" class="w3-button" ><i class="fa fa-users w3-padding fa-2x" aria-hidden="true"></i>Class<i class="fa fa-caret-down w3-padding"></i></button>
+				  <div id="" >
+
+										    
+											<div class="w3-small w3-card w3-dropdown-content w3-bar-block">
+												<a id="add_students" href="#" class="w3-bar-item w3-button"><i class="fa fa-plus w3-padding"></i>Add Student</a>
+												<a id="view_students" href="#" class="w3-bar-item w3-button"><i class="fa fa-eye w3-padding"></i>View Students</a>
+												
+											</div>
+				  </div>
+				  </div>
+
+				   <div class="w3-dropdown-hover">
+				  <button id="ass_home" href="#" class="w3-button" ><i class="fa fa-line-chart w3-padding fa-2x" aria-hidden="true"></i>Assessment<i class="fa fa-caret-down w3-padding"></i></button>
+				  <div id="" >
+
+										    
+											<div class="w3-small w3-card w3-dropdown-content w3-bar-block">
+												<a id="record_marks" href="#" class="w3-bar-item w3-button"><i class="fa fa-edit w3-padding"></i>Record Marks</a>
+												<a id="view_marks" href="#" class="w3-bar-item w3-button"><i class="fa fa-eye w3-padding"></i>View Marks</a>
+												
+											</div>
+				  </div>
+				  </div>
+				  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog w3-padding fa-2x"></i>Settings</a>
+				  <a onclick="logOut();" href="#" class="w3-bar-item w3-button"><i class="fa fa-power-off w3-padding fa-2x"></i>Log out</a>
+		    </div>
+	  
+	  </div>
+	  <div class="w3-col s9" id="globalhome">
+	    <p></p>
+	  </div>
+
+	 
+    </div>
+
+	
+	
+	
+	
+
+	
+	<script>
+function showSidebar() {
+    document.getElementById("mySidebar").style.display = "block";
+}
+function closeSidebar() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+function myFunction(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+function logOut() {
+	//alert('Are you sure?');
+
+	swal({
+	  title: 'Are you sure?',
+	  text: "You won't be able to revert this!",
+	  type: 'warning',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  confirmButtonText: 'Yes, delete it!'
+	}).then(function () {
+	  swal(
+	    'Deleted!',
+	    'Your file has been deleted.',
+	    'success'
+	  )
+	 })
+}
+</script>
+</body>
+
+</html>

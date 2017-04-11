@@ -1,0 +1,38 @@
+<html>
+<head>
+<script>
+function showAssignments() {
+    // if (str == "") {
+    //     document.getElementById("txtHint").innerHTML = "";
+    //     return;
+    // } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","ajax/getassignments.php",true);
+        xmlhttp.send();
+    
+}
+</script>
+</head>
+<body>
+
+<div class="w3-container w3-white w3-text-teal">
+  <h4 onclick="showAssignments();"><i class="fa fa-eye w3-padding-small" aria-hidden="true"></i>View Published Assignments</h4>
+  
+</div>
+
+<div id="txtHint" class= "w3-container w3-responsive"></div>
+
+
+</body>
+</html>
